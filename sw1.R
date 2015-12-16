@@ -3,6 +3,7 @@
 library(data.table)
 library(stringi)
 library(igraph)
+library(jsonlite)
 
 ### (1) Define movie script locations ####
 
@@ -124,3 +125,8 @@ sw5.g <- createGraph(sw5.dat)
 
 sw4.export <- compileLinksNodes(sw4.g)
 sw5.export <- compileLinksNodes(sw5.g)
+
+### (4) Produce JSONs ####
+
+writeLines(toJSON(sw4.export, pretty = TRUE), con = file("sw4.json"))
+writeLines(toJSON(sw5.export, pretty = TRUE), con = file("sw5.json"))
