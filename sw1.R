@@ -92,7 +92,7 @@ createLink <- function(ch) {
   }
 }
 
-createGraph <- function(dat) {
+createGraph <- function(dat, film) {
   dat.l <- split(dat[, desc], dat[, sceneNo])
   dat.l <- lapply(dat.l, unique)
 
@@ -101,6 +101,7 @@ createGraph <- function(dat) {
   dat.l <- dat.l[source != "" & target != ""]
   g <- graph_from_edgelist(as.matrix(dat.l[, .(source, target)]))
   edge_attr(g, "weight") <- dat.l[, value]
+  vertex_attr(g, "film") <- film
   g <- as.undirected(g, mode = "collapse")
   return(g)
 }
@@ -109,24 +110,47 @@ createGraph <- function(dat) {
 compileLinksNodes <- function(g) {
   res.l <- as.data.table(as_edgelist(g, names = FALSE))
   setnames(res.l, c("source", "target"))
-  res.l[, value := edge_attr(g, "weight")]
+  tmp <- data.frame(d1 = edge_attr(g, "weight_1"),
+                    d2 = edge_attr(g, "weight_2"))
+  tmp[is.na(tmp)] <- 0
+  tmp <- tmp[,1] + tmp[,2]
+  res.l[, value := tmp]
   res.l[, source := source - 1]
   res.l[, target := target - 1]
 
   res.n <- data.table(name = vertex_attr(g, "name"))
   res.n[, JSID := 0:(nrow(res.n) - 1)]
+  tmp <- data.frame(d1 = vertex_attr(g, "film_1"),
+                    d2 = vertex_attr(g, "film_2"))
+  tmp <- apply(tmp, 1, function(x) {
+    if (is.na(x[1])) {
+      res <- x[2]
+    } else if (is.na(x[2])) {
+      res <- x[1]
+    } else {
+      res <- "beide"
+    }
+  })
+  res.n[, film := tmp]
   res <- list(nodes = res.n,
               links = res.l)
   return(res)
 }
 
-sw4.g <- createGraph(sw4.dat)
-sw5.g <- createGraph(sw5.dat)
+sw4.g <- createGraph(sw4.dat, "hope")
+sw5.g <- createGraph(sw5.dat, "empire")
+
+sw45.g <- sw4.g + sw5.g
+
+sw45.export <- compileLinksNodes(sw45.g)
 
 sw4.export <- compileLinksNodes(sw4.g)
 sw5.export <- compileLinksNodes(sw5.g)
+
+
 
 ### (4) Produce JSONs ####
 
 writeLines(toJSON(sw4.export, pretty = TRUE), con = file("sw4.json"))
 writeLines(toJSON(sw5.export, pretty = TRUE), con = file("sw5.json"))
+writeLines(toJSON(sw45.export, pretty = TRUE), con = file("sw45.json"))
