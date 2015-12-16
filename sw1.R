@@ -91,29 +91,36 @@ createLink <- function(ch) {
   }
 }
 
-
-compileLinksNodes <- function(dat) {
+createGraph <- function(dat) {
   dat.l <- split(dat[, desc], dat[, sceneNo])
   dat.l <- lapply(dat.l, unique)
 
   dat.l <- rbindlist(lapply(dat.l, createLink))
   dat.l <- dat.l[, .(value = .N), by = c("source", "target")]
   dat.l <- dat.l[source != "" & target != ""]
-  tmp <- graph_from_edgelist(as.matrix(dat.l[, .(source, target)]))
-  edge_attr(tmp, "weight") <- dat.l[, value]
-  tmp <- as.undirected(tmp, mode = "collapse")
-  res.l <- as.data.table(as_edgelist(tmp, names = FALSE))
+  g <- graph_from_edgelist(as.matrix(dat.l[, .(source, target)]))
+  edge_attr(g, "weight") <- dat.l[, value]
+  g <- as.undirected(g, mode = "collapse")
+  return(g)
+}
+
+
+compileLinksNodes <- function(g) {
+  res.l <- as.data.table(as_edgelist(g, names = FALSE))
   setnames(res.l, c("source", "target"))
-  res.l[, value := edge_attr(tmp, "weight")]
+  res.l[, value := edge_attr(g, "weight")]
   res.l[, source := source - 1]
   res.l[, target := target - 1]
 
-  res.n <- data.table(name = vertex_attr(tmp, "name"))
+  res.n <- data.table(name = vertex_attr(g, "name"))
   res.n[, JSID := 0:(nrow(res.n) - 1)]
   res <- list(nodes = res.n,
               links = res.l)
   return(res)
 }
 
-sw4.export <- compileLinksNodes(sw4.dat)
-sw5.export <- compileLinksNodes(sw5.dat)
+sw4.g <- createGraph(sw4.dat)
+sw5.g <- createGraph(sw5.dat)
+
+sw4.export <- compileLinksNodes(sw4.g)
+sw5.export <- compileLinksNodes(sw5.g)
