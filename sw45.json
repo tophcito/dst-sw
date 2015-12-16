@@ -213,7 +213,7 @@
     {
       "name": "MAN",
       "JSID": 42,
-      "film": "hope"
+      "film": "beide"
     },
     {
       "name": "RED LEADER",
@@ -406,91 +406,71 @@
       "film": "empire"
     },
     {
-      "name": "BEN'S VOICE",
+      "name": "YODA",
       "JSID": 81,
       "film": "empire"
     },
     {
-      "name": "YODA",
+      "name": "FIRST CONTROLLER",
       "JSID": 82,
       "film": "empire"
     },
     {
-      "name": "FIRST CONTROLLER",
+      "name": "SECOND CONTROLLER",
       "JSID": 83,
       "film": "empire"
     },
     {
-      "name": "SECOND CONTROLLER",
+      "name": "BOBA FETT",
       "JSID": 84,
       "film": "empire"
     },
     {
-      "name": "BOBA FETT",
+      "name": "TRACKING OFFICER",
       "JSID": 85,
       "film": "empire"
     },
     {
-      "name": "TRACKING OFFICER",
+      "name": "COMMUNICATIONS OFFICER",
       "JSID": 86,
       "film": "empire"
     },
     {
-      "name": "COMMUNICATIONS OFFICER",
+      "name": "LANDO",
       "JSID": 87,
       "film": "empire"
     },
     {
-      "name": "LANDO",
+      "name": "SECOND THREEPIO",
       "JSID": 88,
       "film": "empire"
     },
     {
-      "name": "SECOND THREEPIO",
-      "JSID": 89,
-      "film": "empire"
-    },
-    {
-      "name": "MAN'S VOICE",
-      "JSID": 90,
-      "film": "empire"
-    },
-    {
       "name": "IMPERIAL SOLDIER",
-      "JSID": 91,
+      "JSID": 89,
       "film": "empire"
     }
   ],
   "links": [
     {
-      "source": 88,
-      "target": 91,
-      "value": 1
-    },
-    {
-      "source": 88,
+      "source": 87,
       "target": 89,
       "value": 1
     },
     {
-      "source": 86,
-      "target": 87,
+      "source": 87,
+      "target": 88,
       "value": 1
     },
     {
       "source": 85,
-      "target": 88,
-      "value": 2
+      "target": 86,
+      "value": 1
     },
     {
       "source": 84,
-      "target": 85,
-      "value": 1
-    },
-    {
-      "source": 83,
-      "target": 85,
-      "value": 1
+      "target": 87,
+      "value": 2
     },
     {
       "source": 83,
@@ -498,18 +478,23 @@
       "value": 1
     },
     {
-      "source": 81,
-      "target": 82,
-      "value": 2
+      "source": 82,
+      "target": 84,
+      "value": 1
     },
     {
-      "source": 79,
-      "target": 87,
+      "source": 82,
+      "target": 83,
       "value": 1
     },
     {
       "source": 79,
       "target": 86,
+      "value": 1
+    },
+    {
+      "source": 79,
+      "target": 85,
       "value": 1
     },
     {
@@ -539,17 +524,17 @@
     },
     {
       "source": 64,
-      "target": 85,
-      "value": 1
-    },
-    {
-      "source": 64,
       "target": 84,
       "value": 1
     },
     {
       "source": 64,
       "target": 83,
+      "value": 1
+    },
+    {
+      "source": 64,
+      "target": 82,
       "value": 1
     },
     {
@@ -674,17 +659,17 @@
     },
     {
       "source": 27,
-      "target": 89,
+      "target": 88,
       "value": 1
     },
     {
       "source": 27,
-      "target": 88,
+      "target": 87,
       "value": 6
     },
     {
       "source": 27,
-      "target": 85,
+      "target": 84,
       "value": 1
     },
     {
@@ -755,11 +740,6 @@
     {
       "source": 27,
       "target": 28,
-      "value": 1
-    },
-    {
-      "source": 25,
-      "target": 82,
       "value": 1
     },
     {
@@ -844,13 +824,8 @@
     },
     {
       "source": 19,
-      "target": 82,
-      "value": 1
-    },
-    {
-      "source": 19,
       "target": 81,
-      "value": 1
+      "value": 2
     },
     {
       "source": 19,
@@ -880,7 +855,7 @@
     {
       "source": 19,
       "target": 25,
-      "value": 1
+      "value": 2
     },
     {
       "source": 19,
@@ -894,22 +869,17 @@
     },
     {
       "source": 17,
-      "target": 90,
-      "value": 1
-    },
-    {
-      "source": 17,
-      "target": 89,
-      "value": 1
-    },
-    {
-      "source": 17,
       "target": 88,
+      "value": 1
+    },
+    {
+      "source": 17,
+      "target": 87,
       "value": 7
     },
     {
       "source": 17,
-      "target": 85,
+      "target": 84,
       "value": 1
     },
     {
@@ -960,6 +930,11 @@
     {
       "source": 17,
       "target": 43,
+      "value": 1
+    },
+    {
+      "source": 17,
+      "target": 42,
       "value": 1
     },
     {
@@ -1084,12 +1059,12 @@
     },
     {
       "source": 10,
-      "target": 88,
+      "target": 87,
       "value": 10
     },
     {
       "source": 10,
-      "target": 85,
+      "target": 84,
       "value": 1
     },
     {
@@ -1244,18 +1219,13 @@
     },
     {
       "source": 7,
-      "target": 88,
+      "target": 87,
       "value": 2
-    },
-    {
-      "source": 7,
-      "target": 82,
-      "value": 5
     },
     {
       "source": 7,
       "target": 81,
-      "value": 2
+      "value": 5
     },
     {
       "source": 7,
@@ -1375,7 +1345,7 @@
     {
       "source": 7,
       "target": 19,
-      "value": 23
+      "value": 24
     },
     {
       "source": 7,
@@ -1464,27 +1434,27 @@
     },
     {
       "source": 1,
-      "target": 91,
+      "target": 89,
       "value": 1
     },
     {
       "source": 1,
-      "target": 88,
+      "target": 87,
       "value": 4
     },
     {
       "source": 1,
-      "target": 85,
+      "target": 84,
       "value": 3
     },
     {
       "source": 1,
-      "target": 84,
+      "target": 83,
       "value": 1
     },
     {
       "source": 1,
-      "target": 83,
+      "target": 82,
       "value": 1
     },
     {
@@ -1609,12 +1579,12 @@
     },
     {
       "source": 0,
-      "target": 88,
+      "target": 87,
       "value": 1
     },
     {
       "source": 0,
-      "target": 85,
+      "target": 84,
       "value": 1
     },
     {

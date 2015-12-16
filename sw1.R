@@ -62,6 +62,8 @@ sw5.int <- sw5.int[c(-1:-7, (-1*(length(sw5.int) - 3)):(-1*length(sw5.int)))]
 sw5.int <- stri_replace_all_regex(sw5.int, "<b>", "")
 sw5.int <- stri_trim_both(sw5.int, pattern = "\\P{Wspace}")
 sw5.int <- sw5.int[!stri_detect_regex(sw5.int, "</b>")]
+sw5.int <- stri_replace_all_regex(sw5.int, "'S VOICE", "")
+
 
 
 sw5.sceneIdx <- stri_detect_regex(sw5.int, "(INT. |EXT. )")
